@@ -13,7 +13,7 @@ class DnsHeaven < Formula
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/kcaebe/dns-heaven/releases/download/v0.1.0/dns-heaven_0.1.0_darwin_arm64.tar.gz"
-      sha256 "8f2b45dfd00fa823a92712ef35bc7165340ccb1cc7df3ea493487e52229581fe"
+      sha256 "b93bd94a3e76ecfc85603d6c19ba9f20b04ff2a940231478f77244977d23f74b"
 
       def install
         bin.install "dns-heaven"
@@ -21,7 +21,7 @@ class DnsHeaven < Formula
     end
     if Hardware::CPU.intel?
       url "https://github.com/kcaebe/dns-heaven/releases/download/v0.1.0/dns-heaven_0.1.0_darwin_amd64.tar.gz"
-      sha256 "6ea7ff82839bb762ec907ee892d42b7f01581665239e98f7a7146b05d1fd84a7"
+      sha256 "f8d106b8e87b60310d17c6b976d1d795728b429cdc1611360821fb9cd396e2c7"
 
       def install
         bin.install "dns-heaven"
@@ -41,6 +41,7 @@ class DnsHeaven < Formula
     <string>com.greenboxal.dnsheaven</string>
     <key>ProgramArguments</key>
     <array>
+        <string>sudo</string>
         <string>#{bin}/dns-heaven</string>
     </array>
     <key>KeepAlive</key>
