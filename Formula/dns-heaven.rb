@@ -33,7 +33,7 @@ class DnsHeaven < Formula
     'echo "$(whoami) ALL=(ALL) NOPASSWD: $(which touch)" | sudo tee /etc/sudoers.d/touch'
   end
 
-  plist_options startup: false
+  service.require_root startup: false
 
   def plist
     <<~EOS
